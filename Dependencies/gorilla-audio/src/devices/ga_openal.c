@@ -2,7 +2,7 @@
 
 #include "ga_openal.h"
 
-#include <OpenAL/al.h>"
+#include <OpenAL/al.h>
 #include <OpenAL/alc.h>
 
 #include <stdlib.h>

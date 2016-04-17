@@ -12,3 +12,14 @@
 
 Intermediates/
 ipch/
+
+*.a
+*~
+CMakeFiles
+CMakeCache.txt
+cmake_install.cmake
+*.cbp
+*.so
+*.layout
+Makefile
+
