@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string.h>
+
 #include "sp/Common.h"
 #include "sp/maths/maths.h"
 #include "sp/events/Event.h"

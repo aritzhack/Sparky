@@ -3,9 +3,15 @@
 #include "sp/Types.h"
 #include "sp/maths/maths.h"
 
+#if defined(_MSC_VER)
+    #define ALIGNED_(x) __declspec(align(x))
+#elif defined(__GNUC__)
+   #define ALIGNED_(x) __attribute__ ((aligned(x)))
+#endif
+
 namespace sp { namespace graphics {
 
-	__declspec(align(16)) struct SP_API Light
+	struct ALIGNED_(16) SP_API Light
 	{
 		maths::vec4 color;
 		maths::vec3 position;

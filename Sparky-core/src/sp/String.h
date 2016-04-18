@@ -3,6 +3,8 @@
 #include "sp/sp.h"
 #include "sp/Common.h"
 
+#include <string.h>
+
 typedef std::string String;
 
 namespace sp {
