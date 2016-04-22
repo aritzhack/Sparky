@@ -74,11 +74,14 @@ namespace sp { namespace graphics {
 			return GetUniform<T>(GetUniformDeclaration(name));
 		}
 
+		//TODO What to do with this!?
+		/*
 		template<typename T>
 		const T* GetUniform(const API::ShaderUniformDeclaration* uniform) const
 		{
 			return (T*)&m_UniformData[uniform->GetOffset()];
 		}
+		*/
 	protected:
 		void AllocateStorage();
 		API::ShaderUniformDeclaration* FindUniformDeclaration(const String& name, byte** outBuffer = nullptr);
