@@ -23,3 +23,7 @@ cmake_install.cmake
 *.layout
 Makefile
 
+bin/
+obj/
+*.db
+*.opendb

@@ -16,7 +16,7 @@ class Game : public Application
 {
 public:
 	Game()
-		: Application("Sandbox", WIDTH, HEIGHT, sp::graphics::API::RenderAPI::DIRECT3D)
+		: Application("Sandbox", WIDTH, HEIGHT, sp::graphics::API::RenderAPI::OPENGL)
 	{
 	}
 
