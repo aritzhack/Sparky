@@ -5,7 +5,7 @@
 
 namespace sp { namespace graphics { namespace ShaderFactory {
 
-#if defined(SP_PLATFORM_WINDOWS)
+#if defined(SP_PLATFORM_WINDOWS) || defined(SP_PLATFORM_UNIX)
 
 	static const char* s_BatchRendererShaderGL =
 #include "sp/platform/opengl/shaders/BatchRenderer.shader"

@@ -12,6 +12,9 @@
 
 namespace sp { namespace audio {
 
+    void destroy_on_finish(ga_Handle* in_handle, void* in_context);
+    void loop_on_finish(ga_Handle* in_handle, void* in_context);
+
 	class SP_API Sound
 	{
 	private:

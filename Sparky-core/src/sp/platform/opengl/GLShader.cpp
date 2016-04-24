@@ -36,7 +36,7 @@ namespace sp { namespace graphics { namespace API {
 	{
 		Init();
 	}
-	
+
 	GLShader::~GLShader()
 	{
 	}
@@ -448,7 +448,7 @@ namespace sp { namespace graphics { namespace API {
 // 			SP_WARN(m_Name, " shader does not contain vw_matrix uniform.");
 // 		if (!HasUniform(SHADER_UNIFORM_MODEL_MATRIX_NAME))
 // 			SP_WARN(m_Name, " shader does not contain ml_matrix uniform.");
-// 
+//
 // 		SP_INFO(m_Name, " shader successfully validated.");
 	}
 

@@ -45,9 +45,6 @@ set (SRC_LIST 	src/sp/app/Input.cpp
 				src/sp/platform/opengl/GLShaderUniform.cpp
 				src/sp/platform/opengl/GLIndexBuffer.cpp
 				src/sp/platform/posix/PosixTimer.cpp
-				src/sp/platform/windows/Win32FileSystem.cpp
-				src/sp/platform/windows/Win32Input.cpp
-				src/sp/platform/windows/Win32Timer.cpp
 				src/sp/app/Application.cpp
 				src/sp/audio/Sound.cpp
 				src/sp/audio/SoundManager.cpp
@@ -94,9 +91,6 @@ set (SRC_LIST 	src/sp/app/Input.cpp
 				src/sp/maths/vec2.cpp
 				src/sp/maths/vec3.cpp
 				src/sp/maths/vec4.cpp
-				src/sp/platform/windows/Win32Application.cpp
-				src/sp/platform/windows/Win32Log.cpp
-				src/sp/platform/windows/Win32Window.cpp
 				src/sp/sp.cpp
 				src/sp/String.cpp
 				src/sp/system/Allocator.cpp
@@ -106,8 +100,7 @@ set (SRC_LIST 	src/sp/app/Input.cpp
 				src/sp/system/System.cpp
 				src/sp/system/VFS.cpp
 				src/sp/utils/FileUtils.cpp
-				src/sp/utils/ImageLoad.cpp
-				src/sp/platform/windows/Win32MemoryManager.cpp)
+				src/sp/utils/ImageLoad.cpp)
 
 IF (WIN32)
 	set (SRC_LIST ${SRC_LIST}  	src/sp/platform/directx/DXVertexBuffer.cpp
@@ -122,16 +115,32 @@ IF (WIN32)
 								src/sp/platform/directx/DXIndexBuffer.cpp
 								src/sp/platform/directx/DXTextureCube.cpp
 								src/sp/platform/directx/DXTextureDepth.cpp
-								src/sp/platform/directx/DXFramebuffer2D.cpp)
+								src/sp/platform/directx/DXFramebuffer2D.cpp
+                                src/sp/platform/windows/Win32MemoryManager.cpp
+                                src/sp/platform/windows/Win32Application.cpp
+                                src/sp/platform/windows/Win32Log.cpp
+                                src/sp/platform/windows/Win32Window.cpp
+                                src/sp/platform/windows/Win32FileSystem.cpp
+                                src/sp/platform/windows/Win32Input.cpp
+                                src/sp/platform/windows/Win32Timer.cpp)
 endif()
 
 add_library(Sparky-core SHARED ${SRC_LIST})
 
 include_directories(src)
-add_definitions(-DSP_CORE_DLL -DFREEIMAGE_LIB -DOPJ_STATIC -DSP_DEBUG -DGLEW_STATIC)
+include_directories(../Dependencies/GLEW/include)
+include_directories(../Dependencies/FreeImage/include)
+include_directories(../Dependencies/glfw-3.1.2/include)
+include_directories(../Dependencies/gorilla-audio/src)
+include_directories(../Dependencies/FreeType)
+
+target_link_libraries(Sparky-core ../Dependencies/GLEW/lib/glew32s.lib)
+target_link_libraries(Sparky-core ../Dependencies/glfw-3.1.2/src/libglfw3.a)
+
+add_definitions(-DSP_CORE_DLL -DFREEIMAGE_LIB -DOPJ_STATIC -DSP_DEBUG -DGLEW_STATIC -DSP_PLATFORM_UNIX)
 target_compile_features(Sparky-core PRIVATE cxx_nullptr)
+
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fpermissive -fsyntax-only -w")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpermissive -fsyntax-only -w")
 
 set_target_properties(Sparky-core PROPERTIES PREFIX "")
-
