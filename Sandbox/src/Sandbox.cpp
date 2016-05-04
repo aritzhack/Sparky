@@ -16,7 +16,7 @@ class Game : public Application
 {
 public:
 	Game()
-		: Application("Sandbox", WIDTH, HEIGHT, sp::graphics::API::RenderAPI::OPENGL)
+		: Application("Sandbox", { 1280, 720, false, false }, sp::graphics::API::RenderAPI::OPENGL)
 	{
 	}
 

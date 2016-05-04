@@ -17,7 +17,6 @@ namespace sp {
 	Window::Window(const String& title, const WindowProperties& properties)
 		: m_Title(title), m_Properties(properties), m_Handle(nullptr), m_Closed(false), m_EventCallback(nullptr)
 	{
-		m_Properties = {String(title), width, height, fullscreen};
 		if (!Init())
 		{
 			SP_ERROR("Failed base Window initialization!");

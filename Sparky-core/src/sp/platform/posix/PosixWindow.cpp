@@ -24,7 +24,7 @@ namespace sp {
             return false;
         }
 
-        window = glfwCreateWindow(m_Properties.width, m_Properties.height, m_Properties.title.c_str(), NULL, NULL);
+        window = glfwCreateWindow(m_Properties.width, m_Properties.height, m_Title.c_str(), NULL, NULL);
         if(!window)
         {
             SP_ERROR("Could not create GLFW window!");
