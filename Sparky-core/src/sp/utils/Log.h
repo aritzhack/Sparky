@@ -108,9 +108,22 @@ namespace sp { namespace internal {
 		return (const char*)t;
 	}
 
+	template <>
+	const char* to_string<wchar_t*>(wchar_t* const& t)
+	{
+		wcstombs(sprintf_buffer, t, 1024 * 10);
+		return sprintf_buffer;
+	}
 
 	template <>
 	const char* to_string<char const*>(char const* const& t)
+	{
+		wcstombs(sprintf_buffer, t, 1024 * 10);
+		return sprintf_buffer;
+	}
+
+	template <>
+	const char* to_string<const char*>(const char* const& t)
 	{
 		return t;
 	}
