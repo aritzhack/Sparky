@@ -10,8 +10,7 @@ namespace sp {
 
 	bool FileSystem::FileExists(const String& path)
 	{
-		struct stat s;
-		return stat(path.c_str(), &s) == 0;
+		return access(path.c_str(), F_OK) == 0;
 	}
 
 	int64 FileSystem::GetFileSize(const String& path)

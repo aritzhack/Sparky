@@ -2,45 +2,14 @@
 
 #include "Allocator.h"
 
-#define spnew		new(__FILE__, __LINE__)
-#define spdel		delete
+#define spnew        new(__FILE__, __LINE__)
+#define spdel        delete
 
-inline void* operator new(size_t size)
-{
-	return sp::Allocator::Allocate(size);
-}
-
-inline void* operator new(size_t size, const char* file, uint line)
-{
-	return sp::Allocator::AllocateDebug(size, file, line);
-}
-
-inline void* operator new[](size_t size)
-{
-	return sp::Allocator::Allocate(size);
-}
-
-inline void* operator new[](size_t size, const char* file, uint line)
-{
-	return sp::Allocator::AllocateDebug(size, file, line);
-}
-
-inline void operator delete(void* block)
-{
-	sp::Allocator::Free(block);
-}
-
-inline void operator delete(void* block, const char* file, uint line)
-{
-	sp::Allocator::FreeDebug(block, file, line);
-}
-
-inline void operator delete[](void* block)
-{
-	sp::Allocator::Free(block);
-}
-
-inline void operator delete[](void* block, const char* file, uint line)
-{
-	sp::Allocator::FreeDebug(block, file, line);
-}
+void* operator new(size_t size);
+SP_API void* operator new(size_t size, const char* file, uint line);
+void* operator new[](size_t size);
+SP_API void* operator new[](size_t size, const char* file, uint line);
+void operator delete(void* block);
+SP_API void operator delete(void* block, const char* file, uint line);
+void operator delete[](void* block);
+SP_API void operator delete[](void* block, const char* file, uint line);
