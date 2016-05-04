@@ -9,7 +9,9 @@
 #include "Context.h"
 
 #include "sp/platform/opengl/GLTypes.h"
+#ifdef SP_PLATFORM_WINDOWS
 #include "sp/platform/directx/DXTypes.h"
+#endif
 
 namespace sp { namespace graphics { namespace API {
 

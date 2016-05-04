@@ -51,4 +51,5 @@ include_directories(src include include/config include/internal freetype-gl)
 add_definitions(-DFT2_BUILD_LIBRARY)
 
 set_target_properties(FreeType PROPERTIES PREFIX "")
+set_target_properties(FreeType PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${BASE_DIR}/out)
 

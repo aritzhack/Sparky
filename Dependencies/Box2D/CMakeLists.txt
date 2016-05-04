@@ -52,4 +52,5 @@ add_library(Box2D STATIC
 
 include_directories(src)
 set_target_properties(Box2D PROPERTIES PREFIX "")
+set_target_properties(Box2D PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${BASE_DIR}/out)
 

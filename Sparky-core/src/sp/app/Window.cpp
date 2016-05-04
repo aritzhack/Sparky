@@ -15,8 +15,9 @@ namespace sp {
 	std::map<void*, Window*> Window::s_Handles;
 
 	Window::Window(const char *title, uint width, uint height, bool fullscreen)
-		: m_Properties({ String(title), width, height, fullscreen }), m_Handle(nullptr), m_Closed(false), m_EventCallback(nullptr)
+		: m_Handle(nullptr), m_Closed(false), m_EventCallback(nullptr)
 	{
+		m_Properties = {String(title), width, height, fullscreen};
 		if (!Init())
 		{
 			SP_ERROR("Failed base Window initialization!");

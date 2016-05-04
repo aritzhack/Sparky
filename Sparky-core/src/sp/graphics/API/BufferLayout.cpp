@@ -22,9 +22,11 @@ namespace sp { namespace graphics { namespace API {
 		case RenderAPI::OPENGL:
 			Push(name, GL_FLOAT, sizeof(float), count, normalized);
 			break;
+#ifdef SP_PLATFORM_WINDOWS
 		case RenderAPI::DIRECT3D:
 			Push(name, DX_TYPE_R32_FLOAT, sizeof(float), count, normalized);
 			break;
+#endif
 		}
 	}
 
@@ -36,9 +38,11 @@ namespace sp { namespace graphics { namespace API {
 		case RenderAPI::OPENGL:
 			Push(name, GL_UNSIGNED_INT, sizeof(uint), count, normalized);
 			break;
+#ifdef SP_PLATFORM_WINDOWS
 		case RenderAPI::DIRECT3D:
 			Push(name, DX_TYPE_R32_UINT, sizeof(uint), count, normalized);
 			break;
+#endif
 		}
 	}
 
@@ -50,9 +54,11 @@ namespace sp { namespace graphics { namespace API {
 		case RenderAPI::OPENGL:
 			Push(name, GL_UNSIGNED_BYTE, sizeof(byte), count, normalized);
 			break;
+#ifdef SP_PLATFORM_WINDOWS
 		case RenderAPI::DIRECT3D:
 			Push(name, DX_TYPE_R8G8B8A8_UNORM, sizeof(byte) * 4, 1, normalized);
 			break;
+#endif
 		}
 	}
 
@@ -64,9 +70,11 @@ namespace sp { namespace graphics { namespace API {
 		case RenderAPI::OPENGL:
 			Push(name, GL_FLOAT, sizeof(float), 2, normalized);
 			break;
+#ifdef SP_PLATFORM_WINDOWS
 		case RenderAPI::DIRECT3D:
 			Push(name, DX_TYPE_R32G32_FLOAT, sizeof(maths::vec2), count, normalized);
 			break;
+#endif
 		}
 	}
 
@@ -78,9 +86,11 @@ namespace sp { namespace graphics { namespace API {
 		case RenderAPI::OPENGL:
 			Push(name, GL_FLOAT, sizeof(float), 3, normalized);
 			break;
+#ifdef SP_PLATFORM_WINDOWS
 		case RenderAPI::DIRECT3D:
 			Push(name, DX_TYPE_R32G32B32_FLOAT, sizeof(maths::vec3), count, normalized);
 			break;
+#endif
 		}
 	}
 
@@ -92,9 +102,11 @@ namespace sp { namespace graphics { namespace API {
 		case RenderAPI::OPENGL:
 			Push(name, GL_FLOAT, sizeof(float), 4, normalized);
 			break;
+#ifdef SP_PLATFORM_WINDOWS
 		case RenderAPI::DIRECT3D:
 			Push(name, DX_TYPE_R32G32B32A32_FLOAT, sizeof(maths::vec4), count, normalized);
 			break;
+#endif
 		}
 	}
 

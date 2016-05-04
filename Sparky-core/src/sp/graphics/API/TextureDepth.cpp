@@ -2,8 +2,9 @@
 #include "TextureDepth.h"
 
 #include "sp/platform/opengl/GLTextureDepth.h"
+#ifdef SP_DX
 #include "sp/platform/directx/DXTextureDepth.h"
-
+#endif
 #include "sp/graphics/API/Context.h"
 
 #include "sp/system/Memory.h"
@@ -15,7 +16,9 @@ namespace sp { namespace graphics { namespace API {
 		switch (Context::GetRenderAPI())
 		{
 			case RenderAPI::OPENGL:		return spnew GLTextureDepth(width, height);
+            #ifdef SP_DX
 			case RenderAPI::DIRECT3D:	return spnew D3DTextureDepth(width, height);
+            #endif
 		}
 		return nullptr;
 	}

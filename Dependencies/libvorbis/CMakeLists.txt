@@ -29,6 +29,10 @@ add_library(libvorbis STATIC
 							lib/window.c)
 
 include_directories(include ../libogg/include lib)
-target_link_libraries(libvorbis ../libogg/libogg.a)
-set_target_properties(libvorbis PROPERTIES PREFIX "")
+target_link_libraries(libvorbis libogg)
 
+set_target_properties(libvorbis PROPERTIES PREFIX "")
+set_target_properties(libvorbis PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${BASE_DIR}/out)
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")

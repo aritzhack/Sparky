@@ -27,3 +27,6 @@ bin/
 obj/
 *.db
 *.opendb
+
+.idea
+*.iml

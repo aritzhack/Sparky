@@ -10,7 +10,15 @@ add_library(gorilla-audio SHARED
 						src/gau.c
 						src/ga_stream.c)
 
-include_directories(src ../OpenAL/include)
+include_directories(src)
+include_directories(../OpenAL/include)
+include_directories(../libvorbis/include)
+include_directories(../libogg/include)
 
 set_target_properties(gorilla-audio PROPERTIES PREFIX "")
+set_target_properties(gorilla-audio PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${BASE_DIR}/out)
 
+find_package(Threads)
+target_link_libraries(gorilla-audio "${CMAKE_CURRENT_SOURCE_DIR}/../OpenAL/libs/linux/64/libopenal.so")
+target_link_libraries(gorilla-audio libvorbis)
+target_link_libraries(gorilla-audio ${CMAKE_THREAD_LIB_INIT})

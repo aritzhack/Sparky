@@ -5,14 +5,16 @@
 
 namespace sp { namespace graphics { namespace ShaderFactory {
 
+#ifdef SP_PLATFORM_WINDOWS
+			static const char* s_BatchRendererShaderD3D =
+	#include "sp/platform/directx/shaders/BatchRenderer.hlsl"
+		;
+#endif
+
 #if defined(SP_PLATFORM_WINDOWS) || defined(SP_PLATFORM_UNIX)
 
 	static const char* s_BatchRendererShaderGL =
 #include "sp/platform/opengl/shaders/BatchRenderer.shader"
-		;
-
-	static const char* s_BatchRendererShaderD3D =
-	#include "sp/platform/directx/shaders/BatchRenderer.hlsl"
 		;
 
 	static const char* s_SimpleShader =
@@ -39,7 +41,9 @@ namespace sp { namespace graphics { namespace ShaderFactory {
 		switch (API::Context::GetRenderAPI())
 		{
 			case API::RenderAPI::OPENGL: return API::Shader::CreateFromSource("BatchRenderer", s_BatchRendererShaderGL);
+#ifdef SP_PLATFORM_WINDOWS
 			case API::RenderAPI::DIRECT3D: return API::Shader::CreateFromSource("BatchRenderer", s_BatchRendererShaderD3D);
+#endif
 		}
 		return nullptr;
 	}

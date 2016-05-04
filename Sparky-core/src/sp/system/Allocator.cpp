@@ -1,7 +1,11 @@
 #include "sp/sp.h"
 #include "Allocator.h"
 
+#if defined(SP_PLATFORM_WINDOWS)
 #include <malloc.h>
+#elif defined(SP_PLATFORM_UNIX)
+#include <stdlib.h>
+#endif
 
 #include "sp/utils/Log.h"
 #include "MemoryManager.h"
@@ -9,8 +13,13 @@
 namespace sp {
 
 	#define SP_MEMORY_ALIGNMENT 16
+    #ifdef SP_PLATFORM_WINDOWS
 	#define SP_ALLOC(size)	_aligned_malloc(size, SP_MEMORY_ALIGNMENT)
-	#define SP_FREE(block)	_aligned_free(block);
+    #define SP_FREE(block)	_aligned_free(block);
+    #elif SP_PLATFORM_UNIX
+    #define SP_ALLOC(size)	malloc(size)
+    #define SP_FREE(block) free(block)
+    #endif
 
 	void* Allocator::Allocate(size_t size)
 	{

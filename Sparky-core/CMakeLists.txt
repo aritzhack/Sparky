@@ -44,7 +44,13 @@ set (SRC_LIST 	src/sp/app/Input.cpp
 				src/sp/platform/opengl/GLVertexArray.cpp
 				src/sp/platform/opengl/GLShaderUniform.cpp
 				src/sp/platform/opengl/GLIndexBuffer.cpp
-				src/sp/platform/posix/PosixTimer.cpp
+                src/sp/platform/posix/PosixTimer.cpp
+                src/sp/platform/posix/PosixApplication.cpp
+                src/sp/platform/posix/PosixWindow.cpp
+                src/sp/platform/posix/PosixLog.cpp
+                src/sp/platform/posix/PosixInput.cpp
+                src/sp/platform/posix/PosixMemoryManager.cpp
+                src/sp/platform/posix/PosixFileSystem.cpp
 				src/sp/app/Application.cpp
 				src/sp/audio/Sound.cpp
 				src/sp/audio/SoundManager.cpp
@@ -125,7 +131,6 @@ IF (WIN32)
                                 src/sp/platform/windows/Win32Timer.cpp)
 endif()
 
-add_library(Sparky-core SHARED ${SRC_LIST})
 
 include_directories(src)
 include_directories(../Dependencies/GLEW/include)
@@ -134,13 +139,18 @@ include_directories(../Dependencies/glfw-3.1.2/include)
 include_directories(../Dependencies/gorilla-audio/src)
 include_directories(../Dependencies/FreeType)
 
-target_link_libraries(Sparky-core ../Dependencies/GLEW/lib/glew32s.lib)
-target_link_libraries(Sparky-core ../Dependencies/glfw-3.1.2/src/libglfw3.a)
-
 add_definitions(-DSP_CORE_DLL -DFREEIMAGE_LIB -DOPJ_STATIC -DSP_DEBUG -DGLEW_STATIC -DSP_PLATFORM_UNIX)
-target_compile_features(Sparky-core PRIVATE cxx_nullptr)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fpermissive -fsyntax-only -w")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpermissive -fsyntax-only -w")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpermissive -w -Wl,--no-undefined")
+
+add_library(Sparky-core SHARED ${SRC_LIST})
+
+find_package(OpenGL)
+
+target_link_libraries(Sparky-core ${OPENGL_gl_LIBRARY})
+target_link_libraries(Sparky-core Box2D FreeImage FreeType gorilla-audio glfw)
+target_link_libraries(Sparky-core "${CMAKE_CURRENT_SOURCE_DIR}/../Dependencies/GLEW/src/lib/libGLEW.a")
+
+target_compile_features(Sparky-core PRIVATE cxx_nullptr)
 
 set_target_properties(Sparky-core PROPERTIES PREFIX "")

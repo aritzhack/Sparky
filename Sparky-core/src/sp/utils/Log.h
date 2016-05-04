@@ -350,7 +350,7 @@ namespace sp { namespace internal {
 			SP_FATAL("*************************"); \
 			SP_FATAL("    ASSERTION FAILED!    "); \
 			SP_FATAL("*************************"); \
-			SP_FATAL(__FILE__, ": ", __LINE__); \
+			SP_FATAL(__FILE__, ":", __LINE__); \
 			SP_FATAL("Condition: ", #x); \
 			SP_FATAL(__VA_ARGS__); \
 			DEBUG_BREAK; \

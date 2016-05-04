@@ -7,7 +7,11 @@ namespace sp { namespace graphics { namespace API {
 
 	enum class SP_API RenderAPI
 	{
-		NONE, OPENGL, DIRECT3D
+		NONE,
+		OPENGL,
+#ifdef SP_PLATFORM_WINDOWS
+		DIRECT3D
+#endif
 	};
 
 	class SP_API Context

@@ -1,5 +1,6 @@
 #include "sp/sp.h"
 
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 #include "sp/utils/Log.h"
@@ -7,7 +8,6 @@
 #include "sp/graphics/API/Context.h"
 #include "sp/graphics/Renderer.h"
 
-#include <GL/glew.h>
 
 namespace sp {
 
@@ -24,7 +24,7 @@ namespace sp {
             return false;
         }
 
-        window = glfwCreateWindow(m_Properties.width, m_Properties.height);
+        window = glfwCreateWindow(m_Properties.width, m_Properties.height, m_Properties.title.c_str(), NULL, NULL);
         if(!window)
         {
             SP_ERROR("Could not create GLFW window!");
@@ -32,11 +32,14 @@ namespace sp {
             return false;
         }
 
+		RegisterWindowClass(window, this);
+
 		graphics::API::Context::Create(m_Properties, window);
 
-		ShowWindow(hWnd, SW_SHOW);
-		SetFocus(hWnd);
-		// resize
+		//ShowWindow(hWnd, SW_SHOW);
+		//SetFocus(hWnd);
+
+        // resize
 
 		return true;
 	}
