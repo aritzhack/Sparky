@@ -29,8 +29,8 @@
 #include "mdct.h"
 #include "misc.h"
 
-inline int max ( int a, int b ) { return a > b ? a : b; }
-inline int min ( int a, int b ) { return a < b ? a : b; }
+#define max(a, b) (a > b ? a : b)
+#define min(a, b) (a < b ? a : b)
 
 void _ve_envelope_init(envelope_lookup *e,vorbis_info *vi){
   codec_setup_info *ci=vi->codec_setup;

@@ -299,52 +299,32 @@ namespace sp { namespace internal {
 #endif
 
 #if SPARKY_LOG_LEVEL >= SPARKY_LOG_LEVEL_FATAL
-    #if defined(_MSC_VER)
-        #define SP_FATAL(...) sp::internal::log_message(SPARKY_LOG_LEVEL_FATAL, true, "SPARKY:    ", __VA_ARGS__)
-        #define _SP_FATAL(...) sp::internal::log_message(SPARKY_LOG_LEVEL_FATAL, false, __VA_ARGS__)
-    #elif defined(__GNUC__)
-        #define SP_FATAL(...) sp::internal::log_message(SPARKY_LOG_LEVEL_FATAL, true, "SPARKY:    ", ## __VA_ARGS__)
-        #define _SP_FATAL(...) sp::internal::log_message(SPARKY_LOG_LEVEL_FATAL, false, ## __VA_ARGS__)
-    #endif
+    #define SP_FATAL(...) sp::internal::log_message(SPARKY_LOG_LEVEL_FATAL, true, "SPARKY:    ", ## __VA_ARGS__)
+    #define _SP_FATAL(...) sp::internal::log_message(SPARKY_LOG_LEVEL_FATAL, false, ## __VA_ARGS__)
 #else
     #define SP_FATAL(...)
     #define _SP_FATAL(...)
 #endif
 
 #if SPARKY_LOG_LEVEL >= SPARKY_LOG_LEVEL_ERROR
-    #if defined(_MSC_VER)
-        #define SP_ERROR(...) sp::internal::log_message(SPARKY_LOG_LEVEL_ERROR, true, "SPARKY:    ", __VA_ARGS__)
-        #define _SP_ERROR(...) sp::internal::log_message(SPARKY_LOG_LEVEL_ERROR, false, __VA_ARGS__)
-    #elif defined(__GNUC__)
         #define SP_ERROR(...) sp::internal::log_message(SPARKY_LOG_LEVEL_ERROR, true, "SPARKY:    ", ## __VA_ARGS__)
         #define _SP_ERROR(...) sp::internal::log_message(SPARKY_LOG_LEVEL_ERROR, false, ## __VA_ARGS__)
-    #endif
 #else
     #define SP_ERROR(...)
     #define _SP_ERROR(...)
 #endif
 
 #if SPARKY_LOG_LEVEL >= SPARKY_LOG_LEVEL_WARN
-    #if defined(_MSC_VER)
-        #define SP_WARN(...) sp::internal::log_message(SPARKY_LOG_LEVEL_WARN, true, "SPARKY:    ", __VA_ARGS__)
-        #define _SP_WARN(...) sp::internal::log_message(SPARKY_LOG_LEVEL_WARN, false, __VA_ARGS__)
-    #elif defined(__GNUC__)
-        #define SP_WARN(...) sp::internal::log_message(SPARKY_LOG_LEVEL_WARN, true, "SPARKY:    ", ## __VA_ARGS__)
-        #define _SP_WARN(...) sp::internal::log_message(SPARKY_LOG_LEVEL_WARN, false, ## __VA_ARGS__)
-    #endif
+    #define SP_WARN(...) sp::internal::log_message(SPARKY_LOG_LEVEL_WARN, true, "SPARKY:    ", ## __VA_ARGS__)
+    #define _SP_WARN(...) sp::internal::log_message(SPARKY_LOG_LEVEL_WARN, false, ## __VA_ARGS__)
 #else
     #define SP_WARN(...)
     #define _SP_WARN(...)
 #endif
 
 #if SPARKY_LOG_LEVEL >= SPARKY_LOG_LEVEL_INFO
-    #if defined(_MSC_VER)
-        #define SP_INFO(...) sp::internal::log_message(SPARKY_LOG_LEVEL_INFO, true, "SPARKY:    ", __VA_ARGS__)
-        #define _SP_INFO(...) sp::internal::log_message(SPARKY_LOG_LEVEL_INFO, false, __VA_ARGS__)
-    #elif defined(__GNUC__)
-        #define SP_INFO(...) sp::internal::log_message(SPARKY_LOG_LEVEL_INFO, true, "SPARKY:    ", ## __VA_ARGS__)
-        #define _SP_INFO(...) sp::internal::log_message(SPARKY_LOG_LEVEL_INFO, false, ## __VA_ARGS__)
-    #endif
+    #define SP_INFO(...) sp::internal::log_message(SPARKY_LOG_LEVEL_INFO, true, "SPARKY:    ", ## __VA_ARGS__)
+    #define _SP_INFO(...) sp::internal::log_message(SPARKY_LOG_LEVEL_INFO, false, ## __VA_ARGS__)
 #else
     #define SP_INFO(...)
     #define _SP_INFO(...)
