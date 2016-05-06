@@ -25,6 +25,9 @@ extern "C"
 
 #include "../../../libogg/include/ogg/ogg.h"
 
+#define max(a, b) (a > b ? a : b)
+#define min(a, b) (a < b ? a : b)
+
 typedef struct vorbis_info{
   int version;
   int channels;

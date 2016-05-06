@@ -29,9 +29,6 @@
 #include "mdct.h"
 #include "misc.h"
 
-#define max(a, b) (a > b ? a : b)
-#define min(a, b) (a < b ? a : b)
-
 void _ve_envelope_init(envelope_lookup *e,vorbis_info *vi){
   codec_setup_info *ci=vi->codec_setup;
   vorbis_info_psy_global *gi=&ci->psy_g_param;
